@@ -29,26 +29,32 @@ testWord word
   |length word > 0 = startGuessing word
   |otherwise = putStr "You did not enter a word, goodbye!"
 
+--changeToDashes:: String -> String
+--changeToDashes wordC = (replicate (length word) '-')
+  
+  
 
 getGuess = do
   putStrLn "Enter a letter go guess\n"
   guess<-getLine
   testGuess guess
-  
-testGuess word
+
+testGuess guess
   |length guess > 0 = startGuessing guess
   |otherwise = putStr "You did not enter a character, goodbye!"
 
 startGuessing:: String-> [Char]-> IO()
-startGuessing word guessFunc
-	| guess `elem` word = putStrLn "Good Job!"
-    | guess `notElem` word = putStrLn "You are a shit cunt!"
-	| otherwise = putStrLn "You did not enter a letter"
+startGuessing word guess
+  | guess `elem` word = putStrLn "Good Job!"
+  | guess `notElem` word = putStrLn "You are a shit cunt!"
+  | otherwise = putStrLn "You did not enter a letter"
 
 --Set amount of guesses allowed, if letter guessed is wrong turns -1--
 wrongGuesses:: Int
 wrongGuesses = 8
 
 --Prompt user to enter guesses, if they complete word display winning message--
-
+--check:: String -> String -> String
+--check xs ys 
+--  [if x `elem` ys then x else '-'|x <- xs]
  
