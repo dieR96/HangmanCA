@@ -41,7 +41,8 @@ getGuess = do
 
 testGuess guess
   |length guess > 0 = enterWord
-  |otherwise = putStr "You did not enter a character, goodbye!"
+  |otherwise = getGuess 
+
 
 {-
 testHangman:: String -> String ->IO()
