@@ -53,7 +53,7 @@ play word guess = do
 {-check:: String -> String -> String
 check word guess 
    |x `elem` guess = x 
-   |otherwise = `notElem` guess ='-' -}
+   |otherwise = `notElem` guess ='-' -}zzz
 {-
 testHangman:: String -> String ->IO()
 testHangman testWord testGuess = putStrLn testWord testGuess  
