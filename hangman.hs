@@ -26,7 +26,7 @@ enterWord = do
   testWord word
 
 testWord word
-  |length word > 0 = startGuessing word
+  |length word > 0 =  getGuess
   |otherwise = putStr "You did not enter a word, goodbye!"
 
 --changeToDashes:: String -> String
@@ -40,14 +40,17 @@ getGuess = do
   testGuess guess
 
 testGuess guess
-  |length guess > 0 = startGuessing guess
+  |length guess > 0 = enterWord
   |otherwise = putStr "You did not enter a character, goodbye!"
 
-startGuessing:: String-> [Char]-> IO()
-startGuessing word guess
-  | guess `elem` word = putStrLn "Good Job!"
-  | guess `notElem` word = putStrLn "You are a shit cunt!"
-  | otherwise = putStrLn "You did not enter a letter"
+{-
+testHangman:: String -> String ->IO()
+testHangman testWord testGuess = putStrLn testWord testGuess  
+--startGuessing:: String-> [Char]-> IO()
+--startGuessing word guess
+--  | guess `elem` word = putStrLn "Good Job!"
+--  | guess `notElem` word = putStrLn "You are a shit cunt!"
+--  | otherwise = putStrLn "You did not enter a letter"
 
 --Set amount of guesses allowed, if letter guessed is wrong turns -1--
 wrongGuesses:: Int
@@ -57,4 +60,4 @@ wrongGuesses = 8
 --check:: String -> String -> String
 --check xs ys 
 --  [if x `elem` ys then x else '-'|x <- xs]
- 
+-}
