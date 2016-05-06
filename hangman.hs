@@ -29,11 +29,11 @@ testWord word
   |length word > 0 =  getGuess
   |otherwise = enterWord
 
+
 --changeToDashes:: String -> String
 --changeToDashes wordC = (replicate (length word) '-')
   
-  
-
+ 
 getGuess = do
   putStrLn "Enter a letter go guess\n"
   guess<-getLine
@@ -47,13 +47,14 @@ play:: String -> String -> IO ()
 play word guess = do
    if guess == word then putStrLn "Gratz"
    else
-     do putStrLn "Shite bag"
+     do putStrLn check word guess
    
+--2 strings passed down here from play to test--
+check:: String -> String -> String
+check xs ys 
+   |x <- xs, x `elem` ys = x
+   |otherwise = '-'
    
-{-check:: String -> String -> String
-check word guess 
-   |x `elem` guess = x 
-   |otherwise = `notElem` guess ='-' -}zzz
 {-
 testHangman:: String -> String ->IO()
 testHangman testWord testGuess = putStrLn testWord testGuess  
@@ -69,4 +70,3 @@ wrongGuesses = 8
 
 --Prompt user to enter guesses, if they complete word display winning message--
 
--}
