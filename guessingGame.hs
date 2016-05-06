@@ -16,12 +16,21 @@ main = do
 welcomeMsg :: String
 welcomeMsg =
     "Welcome to my Guess:\n\n"
- ++ "1. There will be a number randomly generated for you.\n\n"
- ++ "2. Once you make your first guess the main game will run.\n\n"
- ++ "3. You need to guess the number and you will be told either hot or cold depending on how your guess is.\n\n"
- ++ "4. The game ends when you win or if you run out of guesses!\n\n"
- ++ "6. \n\n"
+ ++ "1. There will be a number randomly generated for you.\n"
+ ++ "2. Once you make your first guess the main game will run.\n"
+ ++ "3. You need to guess the number and you will be told either hot or cold depending on how your guess is.\n"
+ ++ "4. The game ends when you win or if you run out of guesses!\n"
+ ++ "6. \n"
  ++ "5. GLHF\n\n"
+ ++ "5. Please enter a guess my friend: \n\n"
+
+numberGuesses:: Int
+numberGuesses = 6
+
+guess = do
+guess <- getInt
 
 play:: Int -> IO ()
-play x = do putStrLn x
+play x 
+    |  x  ==  guess = do
+			 putStrLn "Yo"
