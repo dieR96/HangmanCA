@@ -27,7 +27,7 @@ enterWord = do
 
 testWord word
   |length word > 0 =  getGuess
-  |otherwise = enterWord
+  |otherwise = getGuess
 
 --When word is chosen it is displayed like this ---------(for loop) blanks and if a word is guessed right, - turns to letter--
 --changeToDashes:: String -> String
@@ -40,17 +40,16 @@ getGuess = do
   testGuess guess
 
 testGuess guess = do
-   |length guess > 0 = enterWord
+   |length guess > 0 = play
    |otherwise = getGuess
-
    
 play:: String -> String -> IO ()
 play word guess = do
-   if guess == word then putStrLn "Gratz"
+   if guess == word then putStrLn "Gratz" --Prompt user to enter guesses, if they complete word display winning message
    else
      do putStrLn (check word guess)
 	--wrongGuesses -1
-	play word --loops the play function again.
+	play getGuess --loops the play function again.
    
 
 
@@ -67,11 +66,11 @@ play word guess = do
 --2 strings passed down here from play to test--
 check:: String -> String -> String
 check xs ys 
-   |x <- xs, x `elem` ys = x
+   |x <- xs, x `elem` ys = x 
    |otherwise = '-'
 --Set amount of guesses allowed, if letter guessed is wrong turns -1--
 wrongGuesses:: Int
 wrongGuesses = 8
 
---Prompt user to enter guesses, if they complete word display winning message--
+
 

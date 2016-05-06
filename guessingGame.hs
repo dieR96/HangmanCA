@@ -10,6 +10,8 @@ main = do
   putStr "Enter a number for the range"
   n <- getInt
   x <- randomRIO (1, n) :: IO Int
+  welcomeMsg
+  play
   --print x --testing if random works.
   
 
