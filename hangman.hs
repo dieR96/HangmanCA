@@ -27,7 +27,7 @@ enterWord = do
 
 testWord word
   |length word > 0 =  getGuess
-  |otherwise = putStr "You did not enter a word, goodbye!"
+  |otherwise = enterWord
 
 --changeToDashes:: String -> String
 --changeToDashes wordC = (replicate (length word) '-')
@@ -39,11 +39,21 @@ getGuess = do
   guess<-getLine
   testGuess guess
 
-testGuess guess
-  |length guess > 0 = enterWord
-  |otherwise = getGuess 
+testGuess guess = do
+   |length guess > 0 = play
+   |otherwise = getGuess
 
-
+play:: String -> String -> IO ()
+play word guess = do
+   if guess == word then putStrLn "Gratz"
+   else
+     do putStrLn "Shite bag"
+   
+   
+{-check:: String -> String -> String
+check word guess 
+   |x `elem` guess = x 
+   |otherwise = `notElem` guess ='-' -}
 {-
 testHangman:: String -> String ->IO()
 testHangman testWord testGuess = putStrLn testWord testGuess  
@@ -58,7 +68,5 @@ wrongGuesses:: Int
 wrongGuesses = 8
 
 --Prompt user to enter guesses, if they complete word display winning message--
---check:: String -> String -> String
---check xs ys 
---  [if x `elem` ys then x else '-'|x <- xs]
+
 -}
