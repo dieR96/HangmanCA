@@ -10,8 +10,8 @@ main = do
   putStr "Enter a number for the range"
   n <- getInt
   x <- randomRIO (1, n) :: IO Int
-  putStrLn welcomeMsg
-  play x
+  --print x --testing if random works.
+  
 
 welcomeMsg :: String
 welcomeMsg =
@@ -30,7 +30,14 @@ numberGuesses = 6
 guess = do
 guess <- getInt
 
-play:: Int -> IO ()
-play x 
-    |  x  ==  guess = do
-			 putStrLn "Yo"
+play:: Int -> Int -> IO ()
+play x guess
+		if x  ==  guess 
+			then putStrLn "Gratz"
+		else if x > guess
+			then putStrLn "Lower"
+			else x < guess
+			then putStrLn "Higher"
+    
+    
+             

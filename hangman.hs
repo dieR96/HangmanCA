@@ -10,7 +10,7 @@ main = do
 
 
 
---When word is chosen it is displayed like this ---------(for loop) blanks and if a word is guessed right, - turns to letter--
+
 instructions :: String
 instructions =
     "Instructions:\n\n"
@@ -29,7 +29,7 @@ testWord word
   |length word > 0 =  getGuess
   |otherwise = enterWord
 
-
+--When word is chosen it is displayed like this ---------(for loop) blanks and if a word is guessed right, - turns to letter--
 --changeToDashes:: String -> String
 --changeToDashes wordC = (replicate (length word) '-')
   
@@ -40,30 +40,35 @@ getGuess = do
   testGuess guess
 
 testGuess guess = do
-   |length guess > 0 = play
+   |length guess > 0 = enterWord
    |otherwise = getGuess
 
+   
 play:: String -> String -> IO ()
 play word guess = do
    if guess == word then putStrLn "Gratz"
    else
-     do putStrLn check word guess
+     do putStrLn (check word guess)
+	--wrongGuesses -1
+	play word --loops the play function again.
    
---2 strings passed down here from play to test--
-check:: String -> String -> String
-check xs ys 
-   |x <- xs, x `elem` ys = x
-   |otherwise = '-'
+
+
    
 {-
-testHangman:: String -> String ->IO()
-testHangman testWord testGuess = putStrLn testWord testGuess  
+
 --startGuessing:: String-> [Char]-> IO()
 --startGuessing word guess
 --  | guess `elem` word = putStrLn "Good Job!"
 --  | guess `notElem` word = putStrLn "You are a shit cunt!"
 --  | otherwise = putStrLn "You did not enter a letter"
+-}
 
+--2 strings passed down here from play to test--
+check:: String -> String -> String
+check xs ys 
+   |x <- xs, x `elem` ys = x
+   |otherwise = '-'
 --Set amount of guesses allowed, if letter guessed is wrong turns -1--
 wrongGuesses:: Int
 wrongGuesses = 8
